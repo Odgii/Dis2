@@ -18,7 +18,7 @@ public class WindowSystem extends GraphicsEventSystem {
     ArrayList<SimpleWindow> listOfWindows = new ArrayList<>();
     private final double width, height;
     private double originX, originY, destinationX, destinationY;
-    SimpleWindow currentActiveWindow ;
+    SimpleWindow currentActiveWindow;
     int currentIndex;
 
     public WindowSystem(int width, int height) {
@@ -28,13 +28,34 @@ public class WindowSystem extends GraphicsEventSystem {
     }
 
     @Override
-    protected void handlePaint() {    
-        setColor(Color.lightGray);
-        int b = listOfWindows.size(); 
-        for (int i = 1; i <= b  ; b--) {
-            SimpleWindow simple = listOfWindows.get(b-1);
+    protected void handlePaint() {
+        int b = listOfWindows.size();
+        for (int i = 1; i <= b; b--) {
+            SimpleWindow simple = listOfWindows.get(b - 1);
+            createBorder(simple);
+            setColor(Color.lightGray);
             fillRect(simple.beginX, simple.beginY, simple.width, simple.height);
+            if (simple.equals(currentActiveWindow) || b == 1) {
+                showTitleBar(simple, Color.PINK);
+            } else {
+                showTitleBar(simple, Color.GRAY);
+            }
+            drawString(simple.title, simple.beginX + 20, simple.beginY + 20);
         }
+    }
+
+    public void showTitleBar(SimpleWindow s, Color c) {
+        setColor(c);
+        fillRect(s.beginX, s.beginY, s.width, s.beginY + 30);
+        setColor(Color.RED);
+        fillRect(s.width - 30, s.beginY, s.width, s.beginY + 30);
+        setColor(Color.BLACK);
+        drawString("X", s.width - 20, s.beginY + 20);
+    }
+
+    public void createBorder(SimpleWindow s) {
+        setColor(Color.DARK_GRAY);
+        drawRect(s.beginX - 1, s.beginY - 1, s.width, s.height);
     }
 
     public SimpleWindow createNewWindows(double originXt, double originYt, double destinationXt, double destinationYt, String originTitle) {
@@ -42,10 +63,10 @@ public class WindowSystem extends GraphicsEventSystem {
         SimpleWindow s = new SimpleWindow();
         s.beginX = this.originX;
         s.beginY = this.originY;
-        s.width = this.destinationX+this.originX;
-        s.height = this.destinationY+this.originY;
+        s.width = this.destinationX + this.originX;
+        s.height = this.destinationY + this.originY;
         s.title = originTitle;
-        listOfWindows.add(0,s);
+        listOfWindows.add(0, s);
         return s;
     }
 
@@ -55,7 +76,7 @@ public class WindowSystem extends GraphicsEventSystem {
             if ((s.beginX <= x && x <= s.width) && (s.beginY <= y && y <= s.height)) {
                 currentIndex = i;
                 listOfWindows.remove(s);
-                listOfWindows.add(0,s);
+                listOfWindows.add(0, s);
                 return s;
             }
         }
@@ -75,6 +96,5 @@ public class WindowSystem extends GraphicsEventSystem {
     public void handleMousePressed(int x, int y) {
         currentActiveWindow = findClickedWindow(x, y);
     }
-    
 
 }
