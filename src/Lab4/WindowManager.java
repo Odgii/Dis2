@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Lab3;
+
+package Lab4;
 
 /**
  *
  * @author DolceVita
  */
-public class WindowsManager extends WindowSystem {
+public class WindowManager extends WindowSystem {
 
-    public WindowsManager(int width, int height) {
+    public WindowManager(int width, int height) {
         super(width, height);
     }
 
@@ -53,6 +54,8 @@ public class WindowsManager extends WindowSystem {
             }
         }
         else if(!listOfWindows.contains(currentActiveWindow)){
+            System.out.println("current:" + currentActiveWindow.title);
+            System.out.println("small");
             requestRepaint();
         }
     }
@@ -77,3 +80,4 @@ public class WindowsManager extends WindowSystem {
     }
     
 }
+

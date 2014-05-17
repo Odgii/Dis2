@@ -6,11 +6,13 @@ package Lab1;
  * and open the template in the editor.
  */
 import java.io.IOException;
+import javax.swing.JButton;
 /**
  *
  * @author DolceVita
  */
 public class HelloWorldConsole {
+    JButton j = new JButton();
 
 
     public static void main(String[] args) {

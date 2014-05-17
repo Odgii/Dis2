@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 
-package Lab3;
+package Lab4;
 
 /**
  *
  * @author DolceVita
  */
-public class SimpleWindow {
+public interface RATmouseListener {
     
-    public double beginX,beginY,height,width;
-    public String title = "";
+    public void mouseClicked();
     
 }

@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Lab3;
 
+package Lab4;
+
+/**
+ *
+ * @author DolceVita
+ */
 import de.rwth.hci.Graphics.GraphicsEventSystem;
 import java.awt.Color;
 import java.util.ArrayList;
