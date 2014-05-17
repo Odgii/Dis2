@@ -49,11 +49,12 @@ public class WindowSystem extends GraphicsEventSystem {
             drawString(simple.title, simple.beginX + 20, simple.beginY + 20);
         }
         int minb = listOfMinimizedWindows.size();
-        for (int j = 0; j < minb; j++) {
+        //for (int j = 0; j < minb; j++)
+        for (int j = 1; j <= minb; minb--) {
             System.out.println("list:"+minb);
             if (j % 2 == 0) {
                 setColor(Color.lightGray);
-                SimpleWindow minSimple = listOfMinimizedWindows.get(j);
+                SimpleWindow minSimple = listOfMinimizedWindows.get(minb-1);
                 System.out.println("x:" + minSimple.beginX + " y:"+ minSimple.beginY+" width:"+ minSimple.width + " height:"+ minSimple.height);
                 fillRect(minSimple.beginX, minSimple.beginY, minSimple.width, minSimple.height);
                 setColor(Color.black);

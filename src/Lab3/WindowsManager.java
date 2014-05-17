@@ -22,8 +22,8 @@ public class WindowsManager extends WindowSystem {
     public void minimizeWindow(SimpleWindow s)
     {
          int size = listOfMinimizedWindows.size()/2;
-         listOfMinimizedWindows.add(0,s);   
-         SimpleWindow minS = new SimpleWindow();
+         listOfMinimizedWindows.add(0,s); 
+         SimpleWindow minS = new SimpleWindow(); 
          minS.beginX =10;
          minS.beginY=size*70+size*20+10;
          minS.width =60;
@@ -44,7 +44,7 @@ public class WindowsManager extends WindowSystem {
                 listOfWindows.remove(0);
                 requestRepaint();
             }
-            else if ((currentActiveWindow.width - 60 <= x && x <= currentActiveWindow.width-30) && (currentActiveWindow.beginY + 25 <= y && y <= currentActiveWindow.beginY + 55)) {
+            else if ((currentActiveWindow.width - 67 <= x && x <= currentActiveWindow.width-37) && (currentActiveWindow.beginY + 25 <= y && y <= currentActiveWindow.beginY + 55)) {
                 minimizeWindow(currentActiveWindow);       
                 requestRepaint();                  
             }
